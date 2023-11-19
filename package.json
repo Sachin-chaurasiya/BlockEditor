@@ -20,6 +20,7 @@
     "block-based",
     "tiptap"
   ],
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc --p ./tsconfig-build.json && vite build",
