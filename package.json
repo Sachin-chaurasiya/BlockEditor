@@ -1,5 +1,5 @@
 {
-  "name": "blockeditor",
+  "name": "@sachin-chaurasiya/blockeditor",
   "private": false,
   "version": "0.0.0",
   "type": "module",
@@ -51,6 +51,10 @@
     "**/*.css"
   ],
   "prepublishOnly": "npm run build",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "@tiptap/core": "^2.1.12",
     "@tiptap/extension-link": "^2.1.12",
