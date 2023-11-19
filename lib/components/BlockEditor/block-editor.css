@@ -13,3 +13,25 @@
   height: 0;
   pointer-events: none;
 }
+
+.bubble-menu-wrapper {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  background-color: #fff;
+}
+.menu-item-wrapper {
+  display: flex;
+  gap: 8px;
+}
+.menu-item-wrapper > button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.menu-item-wrapper > button.active {
+  background-color: #e1dede;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

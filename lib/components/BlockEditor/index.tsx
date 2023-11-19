@@ -3,6 +3,7 @@ import './block-editor.css';
 import { extensions as defaultExtensions } from './extension';
 import { EditorProps } from '@tiptap/pm/view';
 import { FC } from 'react';
+import BubbleMenu from '../Menu/BubbleMenu';
 
 export interface BlockEditorProps {
   onContentChange?: (content: string) => void;
@@ -48,6 +49,7 @@ export const BlockEditor: FC<BlockEditorProps> = ({
       id="block-editor-wrapper"
     >
       <EditorContent editor={editor} />
+      {editor && <BubbleMenu editor={editor} />}
     </div>
   );
 };
