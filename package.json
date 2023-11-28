@@ -26,7 +26,8 @@
     "build": "tsc --p ./tsconfig-build.json && vite build && npm run build:style",
     "build:style": "postcss ./lib/styles/main.css -o ./dist/main.css",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare-release": "sh ./script/release && yarn run build"
   },
   "peerDependencies": {
     "react": "^18.2.0",
