@@ -21,6 +21,14 @@
     "tiptap"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/Sachin-chaurasiya/BlockEditor",
+  "bugs": {
+    "url": "https://github.com/Sachin-chaurasiya/BlockEditor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sachin-chaurasiya/BlockEditor.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --p ./tsconfig-build.json && vite build && npm run build:style",
