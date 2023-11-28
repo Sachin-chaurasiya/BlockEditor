@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* h1 to h6 font size */
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-lg;
+  }
+  h6 {
+    @apply text-base;
+  }
+}
+
+.block-editor-wrapper {
+  @apply p-8;
+}
+
+.block-editor {
+  @apply w-full h-full border-0 outline-none;
+}
+
+/* show placeholder when editor is in focused mode */
+.tiptap.ProseMirror-focused .is-node-empty.has-focus::before {
+  @apply text-[#959595] float-left h-0 pointer-events-none;
+  content: attr(data-placeholder);
+}
+
+.bubble-menu-wrapper {
+  @apply rounded-[6px] p-[10px] bg-white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+.menu-item-wrapper {
+  @apply flex gap-2;
+}
+.menu-item-wrapper > button {
+  @apply bg-transparent border-none cursor-pointer py-1 px-2 rounded-[4px] hover:bg-gray-200;
+}
+.menu-item-wrapper > button.active {
+  @apply py-1 px-2 rounded-[4px] bg-gray-200;
+}
