@@ -165,13 +165,7 @@ export const getSuggestionItems = (props: {
       description: 'Insert a dividing line',
       type: SuggestionItemType.BASIC_BLOCKS,
       command: ({ editor, range }) =>
-        editor
-          .chain()
-          .focus()
-          .deleteRange(range)
-          .setHardBreak()
-          .setHorizontalRule()
-          .run(),
+        editor.chain().focus().deleteRange(range).setHorizontalRule().run(),
 
       searchTerms: ['separator'],
       icon: (
