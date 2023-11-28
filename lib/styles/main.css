@@ -46,8 +46,22 @@
   @apply flex gap-2;
 }
 .menu-item-wrapper > button {
-  @apply bg-transparent border-none cursor-pointer py-1 px-2 rounded-[4px] hover:bg-gray-200;
+  @apply bg-transparent border-none cursor-pointer p-1 rounded-[4px] hover:bg-gray-200;
 }
 .menu-item-wrapper > button.active {
-  @apply py-1 px-2 rounded-[4px] bg-gray-200;
+  @apply p-1 rounded-[4px] bg-gray-200;
+}
+.menu-icon {
+  @apply w-4 h-4 fill-transparent stroke-current;
+}
+
+.slash-menu-wrapper {
+  @apply max-h-[300px] py-[12px] bg-white overflow-y-auto border border-solid border-gray-200 shadow-lg rounded-[6px];
+}
+
+.slash-menu-icon {
+  @apply h-[20px] w-[20px] fill-black;
+}
+.slash-menu-icon-with-strokes {
+  @apply stroke-black h-[20px] w-[20px];
 }

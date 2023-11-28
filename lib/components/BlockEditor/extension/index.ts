@@ -1,6 +1,9 @@
 import Placeholder from '@tiptap/extension-placeholder';
 import StarterKit from '@tiptap/starter-kit';
 import { Focus } from './focus';
+import { SlashCommand } from './slashCommand';
+import { getSuggestionItems } from './slashCommand/items';
+import renderItems from './slashCommand/renderItems';
 
 export const extensions = [
   StarterKit,
@@ -22,4 +25,10 @@ export const extensions = [
     },
   }),
   Focus.configure({ mode: 'deepest' }),
+  SlashCommand.configure({
+    slashSuggestion: {
+      items: getSuggestionItems,
+      render: renderItems,
+    },
+  }),
 ];
