@@ -39,9 +39,9 @@
 ## Installation
 
 ```shell
-npm install blockeditor
+npm install @sachin-chaurasiya/blockeditor
 
 OR
 
-yarn add blockeditor
+yarn add @sachin-chaurasiya/blockeditor
 ```
