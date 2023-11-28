@@ -1,4 +1,4 @@
-import { BlockEditor } from '../lib/main';
+import { BlockEditor } from '../dist/main';
 
 function App() {
   return (

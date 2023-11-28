@@ -1,5 +1,5 @@
 import { EditorContent, Extension, useEditor } from '@tiptap/react';
-import './block-editor.css';
+import '../../styles/main.css';
 import { extensions as defaultExtensions } from './extension';
 import { EditorProps } from '@tiptap/pm/view';
 import { FC } from 'react';
