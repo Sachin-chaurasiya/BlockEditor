@@ -7,6 +7,8 @@
     <a href="https://github.com/Sachin-chaurasiya/BlockEditor/issues/new/choose">Report Bug</a>
     ·
     <a href="https://github.com/Sachin-chaurasiya/BlockEditor/issues/new/choose">Request Feature</a>
+     ·
+    <a href="https://stackblitz.com/edit/blockeditor-demo">Demo</a>    
 </p>
 <p align="center">
 <a href="http://www.npmtrends.com/@sachin-chaurasiya/blockeditor" target="blank">
