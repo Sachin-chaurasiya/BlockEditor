@@ -1,11 +1,7 @@
 import { BlockEditor } from '../dist/main';
 
 function App() {
-  return (
-    <>
-      <BlockEditor />
-    </>
-  );
+  return <BlockEditor menuType="bar" />;
 }
 
 export default App;

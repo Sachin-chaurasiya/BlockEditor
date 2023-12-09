@@ -4,6 +4,7 @@ import { extensions as defaultExtensions } from './extension';
 import { EditorProps } from '@tiptap/pm/view';
 import { FC } from 'react';
 import BubbleMenu from '../Menu/BubbleMenu';
+import BarMenu from '../Menu/BarMenu';
 
 export interface BlockEditorProps {
   onContentChange?: (content: string) => void;
@@ -13,6 +14,7 @@ export interface BlockEditorProps {
   autoFocus?: boolean;
   extensions?: Extension[];
   editorProps?: EditorProps;
+  menuType?: 'bubble' | 'bar';
 }
 
 export const BlockEditor: FC<BlockEditorProps> = ({
@@ -23,6 +25,7 @@ export const BlockEditor: FC<BlockEditorProps> = ({
   extensions,
   onContentChange,
   readOnly,
+  menuType = 'bubble',
 }) => {
   const editor = useEditor({
     extensions: [...defaultExtensions, ...(extensions ?? [])],
@@ -48,8 +51,20 @@ export const BlockEditor: FC<BlockEditorProps> = ({
       className={`block-editor-wrapper ${className}`}
       id="block-editor-wrapper"
     >
-      <EditorContent editor={editor} />
-      {editor && <BubbleMenu editor={editor} />}
+      {menuType === 'bar' && (
+        <div className="m-[40px] rounded-lg border min-h-[300px]">
+          {editor && <BarMenu editor={editor} />}
+          <div className="h-full w-full p-[16px]">
+            <EditorContent editor={editor} />
+          </div>
+        </div>
+      )}
+      {menuType === 'bubble' && (
+        <>
+          <EditorContent editor={editor} />
+          {editor && <BubbleMenu editor={editor} />}
+        </>
+      )}
     </div>
   );
 };
