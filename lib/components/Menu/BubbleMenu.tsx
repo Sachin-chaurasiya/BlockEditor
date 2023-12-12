@@ -1,4 +1,4 @@
-import { BubbleMenu as CoreBubbleMenu, Editor } from '@tiptap/react';
+import { BubbleMenu as CoreBubbleMenu, BubbleMenuProps as CoreBubbleMenuProps, Editor, isNodeSelection } from '@tiptap/react';
 import { FC } from 'react';
 
 export interface BubbleMenuProps {
@@ -149,8 +149,31 @@ const BubbleMenu: FC<BubbleMenuProps> = ({ editor }) => {
     },
   ];
 
+  const handleShouldShow:CoreBubbleMenuProps['shouldShow']= ({editor,state})=>{
+    const { selection } = state;
+    const { empty } = selection;
+
+    // don't show bubble menu if:
+    // - the selected node is an image
+    // - the selection is empty
+    // - the selection is a node selection (for drag handles)
+    // - link is active
+    if (
+      editor.isActive('image') ||
+      empty ||
+      isNodeSelection(selection) ||
+      editor.isActive('link') ||
+      editor.isActive('table')||
+      editor.isActive("gistEmbed")
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
   return (
-    <CoreBubbleMenu className="bubble-menu-wrapper" editor={editor}>
+    <CoreBubbleMenu className="bubble-menu-wrapper" editor={editor} shouldShow={handleShouldShow}>
       <div className="menu-item-wrapper">
         {menuItems.map((item) => (
           <button

@@ -4,6 +4,7 @@ import { Focus } from './focus';
 import { SlashCommand } from './slashCommand';
 import { getSuggestionItems } from './slashCommand/items';
 import renderItems from './slashCommand/renderItems';
+import { GistEmbed } from './gistEmbed/gistEmbed';
 
 export const extensions = [
   StarterKit,
@@ -31,4 +32,5 @@ export const extensions = [
       render: renderItems,
     },
   }),
+  GistEmbed
 ];
