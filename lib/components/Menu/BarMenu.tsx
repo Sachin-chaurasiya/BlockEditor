@@ -1,5 +1,5 @@
 import { Editor } from '@tiptap/react';
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useCallback } from 'react';
 import BoldIcon from '../../icons/bold.svg';
 import ItalicIcon from '../../icons/italic.svg';
 import StrikeIcon from '../../icons/text-strike.svg';
@@ -18,6 +18,49 @@ export interface BarMenuProps {
 }
 
 const BarMenu: FC<BarMenuProps> = ({ editor }) => {
+  const handleSetLink = useCallback(() => {
+    const previousUrl = editor.getAttributes('link').href;
+    // const selectedText = editor.commands.getSelectedText() as unknown as
+    //   | string
+    //   | null;
+    const url = window.prompt('Link', previousUrl);
+    // const text = window.prompt('Text', selectedText || '');
+
+    // cancelled
+    if (url === null) {
+      return;
+    }
+
+    // empty
+    if (url === '') {
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange('link')
+        .unsetLink()
+        // .command(({ tr }) => {
+        //   tr.insertText(text || url);
+        //   return true;
+        // })
+        .run();
+
+      return;
+    }
+
+    // update link
+    editor
+      .chain()
+      .focus()
+      .extendMarkRange('link')
+      .setLink({ href: url })
+      // .command(({ tr }) => {
+      //   tr.insertText(text || url);
+      //   return true;
+      // })
+      .selectTextblockEnd()
+      .run();
+  }, [editor]);
+
   const Formats = [
     [
       {
@@ -71,9 +114,8 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
       {
         name: 'link',
         icon: LinkIcon,
-        command: () => editor.chain().focus().run(),
-        isActive: () => false,
-        disabled: true,
+        command: () => handleSetLink(),
+        isActive: () => editor.isActive('link'),
       },
       {
         name: 'image',

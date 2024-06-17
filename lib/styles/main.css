@@ -88,3 +88,10 @@
 .block-editor ol {
   @apply list-decimal pl-4;
 }
+
+.block-editor a {
+  @apply text-blue-500 underline;
+}
+.block-editor a:hover {
+  @apply text-blue-700;
+}

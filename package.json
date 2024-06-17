@@ -83,5 +83,11 @@
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
     "@tiptap/suggestion": "^2.4.0"
+  },
+  "resolutions": {
+    "prosemirror-model": "1.18.1",
+    "prosemirror-state": "1.4.1",
+    "prosemirror-transform": "1.7.0",
+    "prosemirror-view": "1.28.2"
   }
 }
