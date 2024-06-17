@@ -1,28 +1,97 @@
 import { Editor } from '@tiptap/react';
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useCallback } from 'react';
+import BoldIcon from '../../icons/bold.svg';
+import ItalicIcon from '../../icons/italic.svg';
+import StrikeIcon from '../../icons/text-strike.svg';
+import InlineCodeIcon from '../../icons/inline-code.svg';
+import HighlightIcon from '../../icons/highlight.svg';
+import UnorderedListIcon from '../../icons/unordered-list.svg';
+import OrderedListIcon from '../../icons/ordered-list.svg';
+import LinkIcon from '../../icons/link.svg';
+import ImageIcon from '../../icons/image.svg';
+import CodeBlockIcon from '../../icons/code-block.svg';
+import BlockQuoteIcon from '../../icons/block-quote.svg';
+import HorizontalLineIcon from '../../icons/horizontal-line.svg';
 
 export interface BarMenuProps {
   editor: Editor;
 }
 
 const BarMenu: FC<BarMenuProps> = ({ editor }) => {
+  const handleSetLink = useCallback(() => {
+    const previousUrl = editor.getAttributes('link').href;
+    // const selectedText = editor.commands.getSelectedText() as unknown as
+    //   | string
+    //   | null;
+    const url = window.prompt('Link', previousUrl);
+    // const text = window.prompt('Text', selectedText || '');
+
+    // cancelled
+    if (url === null) {
+      return;
+    }
+
+    // empty
+    if (url === '') {
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange('link')
+        .unsetLink()
+        // .command(({ tr }) => {
+        //   tr.insertText(text || url);
+        //   return true;
+        // })
+        .run();
+
+      return;
+    }
+
+    // update link
+    editor
+      .chain()
+      .focus()
+      .extendMarkRange('link')
+      .setLink({ href: url })
+      // .command(({ tr }) => {
+      //   tr.insertText(text || url);
+      //   return true;
+      // })
+      .selectTextblockEnd()
+      .run();
+  }, [editor]);
+
+  const handleSetImage = useCallback(() => {
+    const existingImage = editor.getAttributes('image').src;
+
+    const url = window.prompt(
+      existingImage ? 'Update Image URL' : 'Image URL',
+      existingImage
+    );
+    if (!url) {
+      return;
+    }
+
+    editor.chain().focus().setImage({ src: url }).run();
+  }, [editor]);
+
   const Formats = [
     [
       {
         name: 'bold',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/bold.svg',
+        icon: BoldIcon,
         command: () => editor.chain().focus().toggleBold().run(),
         isActive: () => editor.isActive('bold'),
       },
       {
         name: 'italic',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/italic.svg',
+        icon: ItalicIcon,
         command: () => editor.chain().focus().toggleItalic().run(),
         isActive: () => editor.isActive('italic'),
       },
       {
         name: 'strike',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/text-strike.svg',
+        icon: StrikeIcon,
         command: () => editor.chain().focus().toggleStrike().run(),
         isActive: () => editor.isActive('strike'),
       },
@@ -30,28 +99,27 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
     [
       {
         name: 'inline-code',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/inline-code.svg',
+        icon: InlineCodeIcon,
         command: () => editor.chain().focus().toggleCode().run(),
         isActive: () => editor.isActive('code'),
       },
       {
         name: 'highlight',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/highlight.svg',
-        command: () => editor.chain().focus().run(),
-        isActive: () => false,
-        disabled: true,
+        icon: HighlightIcon,
+        command: () => editor.chain().focus().toggleHighlight().run(),
+        isActive: () => editor.isActive('highlight'),
       },
     ],
     [
       {
         name: 'unordered-list',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/unordered-list.svg',
+        icon: UnorderedListIcon,
         command: () => editor.chain().focus().toggleBulletList().run(),
         isActive: () => editor.isActive('bulletList'),
       },
       {
         name: 'ordered-list',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/ordered-list.svg',
+        icon: OrderedListIcon,
         command: () => editor.chain().focus().toggleOrderedList().run(),
         isActive: () => editor.isActive('orderedList'),
       },
@@ -59,33 +127,32 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
     [
       {
         name: 'link',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/link.svg',
-        command: () => editor.chain().focus().run(),
-        isActive: () => false,
-        disabled: true,
+        icon: LinkIcon,
+        command: () => handleSetLink(),
+        isActive: () => editor.isActive('link'),
       },
       {
         name: 'image',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/image.svg',
-        command: () => editor.chain().focus().run(),
-        isActive: () => false,
-        disabled: true,
+        icon: ImageIcon,
+        command: () => handleSetImage(),
+        isActive: () => editor.isActive('image'),
+        disabled: false,
       },
       {
         name: 'code-block',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/code-block.svg',
+        icon: CodeBlockIcon,
         command: () => editor.chain().focus().toggleCodeBlock().run(),
         isActive: () => editor.isActive('codeBlock'),
       },
       {
         name: 'block-quote',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/block-quote.svg',
+        icon: BlockQuoteIcon,
         command: () => editor.chain().focus().toggleBlockquote().run(),
         isActive: () => editor.isActive('blockquote'),
       },
       {
         name: 'horizontal-line',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/horizontal-line.svg',
+        icon: HorizontalLineIcon,
         command: () => editor.chain().focus().setHorizontalRule().run(),
         isActive: () => false,
       },
@@ -93,11 +160,11 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
   ];
 
   return (
-    <div className="flex flex-row gap-2 border-b p-[8px]">
+    <div className="flex flex-row gap-4 border-b p-[8px]">
       {Formats.map((format, index) => {
         return (
           <Fragment key={`format-group-${index}`}>
-            <div className="flex">
+            <div className="flex gap-2">
               {format.map((item) => {
                 return (
                   <button
@@ -107,7 +174,7 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
                       item.isActive() ? 'bg-gray-100' : ''
                     } ${
                       item?.disabled ? 'cursor-not-allowed bg-opacity-50' : ''
-                    }}`}
+                    }`}
                     onClick={item.command}
                   >
                     <img src={item.icon} alt={item.name} />

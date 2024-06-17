@@ -65,3 +65,37 @@
 .slash-menu-icon-with-strokes {
   @apply stroke-black h-[20px] w-[20px];
 }
+
+/* CSS for formats */
+.block-editor code {
+  @apply bg-gray-100 p-1 rounded-[4px];
+}
+
+.block-editor pre {
+  @apply bg-gray-100 p-4 rounded-[4px];
+}
+
+.block-editor pre code {
+  @apply bg-inherit p-0 rounded-none;
+}
+
+.block-editor blockquote {
+  @apply border-l-4 border-gray-300 p-2 pl-4;
+}
+.block-editor ul {
+  @apply list-disc pl-4;
+}
+.block-editor ol {
+  @apply list-decimal pl-4;
+}
+
+.block-editor a {
+  @apply text-blue-500 underline;
+}
+.block-editor a:hover {
+  @apply text-blue-700;
+}
+
+.block-editor .block-editor-image-node {
+  @apply m-auto w-full h-auto;
+}
