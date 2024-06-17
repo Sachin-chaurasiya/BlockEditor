@@ -1,9 +1,9 @@
 import Placeholder from '@tiptap/extension-placeholder';
 import StarterKit from '@tiptap/starter-kit';
-import { Focus } from './focus';
 import { SlashCommand } from './slashCommand';
 import { getSuggestionItems } from './slashCommand/items';
 import renderItems from './slashCommand/renderItems';
+import Focus from '@tiptap/extension-focus';
 
 export const extensions = [
   StarterKit,
