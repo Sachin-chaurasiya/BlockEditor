@@ -4,6 +4,7 @@ import { SlashCommand } from './slashCommand';
 import { getSuggestionItems } from './slashCommand/items';
 import renderItems from './slashCommand/renderItems';
 import Focus from '@tiptap/extension-focus';
+import Highlight from '@tiptap/extension-highlight';
 
 export const extensions = [
   StarterKit,
@@ -31,4 +32,5 @@ export const extensions = [
       render: renderItems,
     },
   }),
+  Highlight,
 ];

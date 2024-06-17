@@ -49,9 +49,8 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
       {
         name: 'highlight',
         icon: HighlightIcon,
-        command: () => editor.chain().focus().run(),
-        isActive: () => false,
-        disabled: true,
+        command: () => editor.chain().focus().toggleHighlight().run(),
+        isActive: () => editor.isActive('highlight'),
       },
     ],
     [
