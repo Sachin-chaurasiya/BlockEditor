@@ -39,6 +39,8 @@ export const BlockEditor: FC<BlockEditorProps> = ({
     editorProps: {
       attributes: {
         class: 'block-editor',
+        // this is a workaround to make the editor autofocus
+        ...(autoFocus ? { autofocus: 'true' } : {}),
       },
       ...editorProps,
     },
