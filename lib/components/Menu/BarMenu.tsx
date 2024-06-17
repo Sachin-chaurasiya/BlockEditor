@@ -168,6 +168,7 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
               {format.map((item) => {
                 return (
                   <button
+                    title={item.name}
                     disabled={item?.disabled}
                     key={item.name}
                     className={`rounded-md ${
