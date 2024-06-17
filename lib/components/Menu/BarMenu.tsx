@@ -93,11 +93,11 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
   ];
 
   return (
-    <div className="flex flex-row gap-2 border-b p-[8px]">
+    <div className="flex flex-row gap-4 border-b p-[8px]">
       {Formats.map((format, index) => {
         return (
           <Fragment key={`format-group-${index}`}>
-            <div className="flex">
+            <div className="flex gap-2">
               {format.map((item) => {
                 return (
                   <button
@@ -107,7 +107,7 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
                       item.isActive() ? 'bg-gray-100' : ''
                     } ${
                       item?.disabled ? 'cursor-not-allowed bg-opacity-50' : ''
-                    }}`}
+                    }`}
                     onClick={item.command}
                   >
                     <img src={item.icon} alt={item.name} />
