@@ -24,7 +24,7 @@ export const extensions = [
       return 'Type "/" for commands...';
     },
   }),
-  Focus.configure({ mode: 'deepest' }),
+  Focus.configure({ mode: 'deepest', className: 'has-focus' }),
   SlashCommand.configure({
     slashSuggestion: {
       items: getSuggestionItems,
