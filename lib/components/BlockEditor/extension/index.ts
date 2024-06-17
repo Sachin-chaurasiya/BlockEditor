@@ -6,7 +6,7 @@ import renderItems from './slashCommand/renderItems';
 import Focus from '@tiptap/extension-focus';
 import Highlight from '@tiptap/extension-highlight';
 import SelectedText from './extension-selectedText';
-import Link from './link';
+import Link from './extension-link';
 
 export const extensions = [
   StarterKit,
