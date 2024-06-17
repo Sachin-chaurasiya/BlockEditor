@@ -1,5 +1,17 @@
 import { Editor } from '@tiptap/react';
 import { FC, Fragment } from 'react';
+import BoldIcon from '../../icons/bold.svg';
+import ItalicIcon from '../../icons/italic.svg';
+import StrikeIcon from '../../icons/text-strike.svg';
+import InlineCodeIcon from '../../icons/inline-code.svg';
+import HighlightIcon from '../../icons/highlight.svg';
+import UnorderedListIcon from '../../icons/unordered-list.svg';
+import OrderedListIcon from '../../icons/ordered-list.svg';
+import LinkIcon from '../../icons/link.svg';
+import ImageIcon from '../../icons/image.svg';
+import CodeBlockIcon from '../../icons/code-block.svg';
+import BlockQuoteIcon from '../../icons/block-quote.svg';
+import HorizontalLineIcon from '../../icons/horizontal-line.svg';
 
 export interface BarMenuProps {
   editor: Editor;
@@ -10,19 +22,19 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
     [
       {
         name: 'bold',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/bold.svg',
+        icon: BoldIcon,
         command: () => editor.chain().focus().toggleBold().run(),
         isActive: () => editor.isActive('bold'),
       },
       {
         name: 'italic',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/italic.svg',
+        icon: ItalicIcon,
         command: () => editor.chain().focus().toggleItalic().run(),
         isActive: () => editor.isActive('italic'),
       },
       {
         name: 'strike',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/text-strike.svg',
+        icon: StrikeIcon,
         command: () => editor.chain().focus().toggleStrike().run(),
         isActive: () => editor.isActive('strike'),
       },
@@ -30,13 +42,13 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
     [
       {
         name: 'inline-code',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/inline-code.svg',
+        icon: InlineCodeIcon,
         command: () => editor.chain().focus().toggleCode().run(),
         isActive: () => editor.isActive('code'),
       },
       {
         name: 'highlight',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/highlight.svg',
+        icon: HighlightIcon,
         command: () => editor.chain().focus().run(),
         isActive: () => false,
         disabled: true,
@@ -45,13 +57,13 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
     [
       {
         name: 'unordered-list',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/unordered-list.svg',
+        icon: UnorderedListIcon,
         command: () => editor.chain().focus().toggleBulletList().run(),
         isActive: () => editor.isActive('bulletList'),
       },
       {
         name: 'ordered-list',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/ordered-list.svg',
+        icon: OrderedListIcon,
         command: () => editor.chain().focus().toggleOrderedList().run(),
         isActive: () => editor.isActive('orderedList'),
       },
@@ -59,33 +71,33 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
     [
       {
         name: 'link',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/link.svg',
+        icon: LinkIcon,
         command: () => editor.chain().focus().run(),
         isActive: () => false,
         disabled: true,
       },
       {
         name: 'image',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/image.svg',
+        icon: ImageIcon,
         command: () => editor.chain().focus().run(),
         isActive: () => false,
         disabled: true,
       },
       {
         name: 'code-block',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/code-block.svg',
+        icon: CodeBlockIcon,
         command: () => editor.chain().focus().toggleCodeBlock().run(),
         isActive: () => editor.isActive('codeBlock'),
       },
       {
         name: 'block-quote',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/block-quote.svg',
+        icon: BlockQuoteIcon,
         command: () => editor.chain().focus().toggleBlockquote().run(),
         isActive: () => editor.isActive('blockquote'),
       },
       {
         name: 'horizontal-line',
-        icon: 'https://raw.githubusercontent.com/Sachin-chaurasiya/rich-text-editor-icons/main/icons/horizontal-line.svg',
+        icon: HorizontalLineIcon,
         command: () => editor.chain().focus().setHorizontalRule().run(),
         isActive: () => false,
       },
