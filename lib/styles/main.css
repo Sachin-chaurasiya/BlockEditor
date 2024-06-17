@@ -95,3 +95,7 @@
 .block-editor a:hover {
   @apply text-blue-700;
 }
+
+.block-editor .block-editor-image-node {
+  @apply m-auto w-full h-auto;
+}

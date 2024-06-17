@@ -61,6 +61,20 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
       .run();
   }, [editor]);
 
+  const handleSetImage = useCallback(() => {
+    const existingImage = editor.getAttributes('image').src;
+
+    const url = window.prompt(
+      existingImage ? 'Update Image URL' : 'Image URL',
+      existingImage
+    );
+    if (!url) {
+      return;
+    }
+
+    editor.chain().focus().setImage({ src: url }).run();
+  }, [editor]);
+
   const Formats = [
     [
       {
@@ -120,9 +134,9 @@ const BarMenu: FC<BarMenuProps> = ({ editor }) => {
       {
         name: 'image',
         icon: ImageIcon,
-        command: () => editor.chain().focus().run(),
-        isActive: () => false,
-        disabled: true,
+        command: () => handleSetImage(),
+        isActive: () => editor.isActive('image'),
+        disabled: false,
       },
       {
         name: 'code-block',

@@ -7,9 +7,15 @@ import Focus from '@tiptap/extension-focus';
 import Highlight from '@tiptap/extension-highlight';
 import SelectedText from './extension-selectedText';
 import Link from './extension-link';
+import Image from '@tiptap/extension-image';
 
 export const extensions = [
-  StarterKit,
+  StarterKit.configure({
+    dropcursor: {
+      width: 4,
+      color: '#ebf6fe',
+    },
+  }),
   Placeholder.configure({
     showOnlyWhenEditable: true,
     includeChildren: true,
@@ -37,4 +43,11 @@ export const extensions = [
   Highlight,
   SelectedText,
   Link,
+  Image.configure({
+    inline: true,
+    HTMLAttributes: {
+      class: 'block-editor-image-node',
+    },
+    allowBase64: true,
+  }),
 ];
